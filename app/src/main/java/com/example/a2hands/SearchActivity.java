@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.SearchView;
@@ -91,8 +90,8 @@ public class SearchActivity extends AppCompatActivity{
             @Override
             public boolean onQueryTextSubmit(String query) {
                 Query searchQuery = usersRef.orderBy("first_name", Query.Direction.DESCENDING)
-                        .startAt(searchView.getQuery().toString().trim())
-                        .endAt(searchView.getQuery().toString().trim()+"\uf8ff");
+                        .startAt(query)
+                        .endAt(query+"\uf8ff");
 
                 FirestoreRecyclerOptions<User> options = new FirestoreRecyclerOptions.Builder<User>()
                         .setQuery(searchQuery, User.class)
